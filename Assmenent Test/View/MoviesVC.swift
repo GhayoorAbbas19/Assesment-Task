@@ -29,9 +29,11 @@ class  MoviesVC: UIViewController {
         
         setUI()
         
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
         getMovies()
-        
-        
     }
     
     func setUI(){
@@ -77,14 +79,22 @@ class  MoviesVC: UIViewController {
         }
         else{
             
+            progressView.stopAnimating()
+            
             let alert = UIAlertController(title: "Network Error", message: StringErrors.noInternet, preferredStyle: .alert)
             
             let tryAgain = UIAlertAction(title: "Try Again", style: .default) { alert in
                 
+                self.progressView.isHidden =  false
+                self.progressView.startAnimating()
                 self.getMovies()
+                
             }
             alert.addAction(tryAgain)
-            self.present(alert, animated: true, completion: nil)
+            
+            
+            
+            self.present(alert, animated: true)
             
             
         }

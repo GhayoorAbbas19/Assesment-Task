@@ -10,6 +10,8 @@ import UIKit
 
 struct  Constants{
     
+    static let sceneDelegate = UIApplication.shared.connectedScenes
+           .first!.delegate as! SceneDelegate
     static var baseUrl = "https://api.themoviedb.org/3/movie/"
     static var imageUrl = "https://image.tmdb.org/t/p/w185"
     static let appDelegate = UIApplication.shared.delegate as! AppDelegate
